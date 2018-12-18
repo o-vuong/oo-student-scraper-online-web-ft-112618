@@ -1,8 +1,8 @@
-require `Nokogiri`
 require 'open-uri'
-require 'pry'
+
 
 class Scraper
+
 
   def self.scrape_index_page(index_url)
     index_page = Nokogiri::HTML(open(index_url))
@@ -17,6 +17,7 @@ class Scraper
     end
     students
   end
+
 
   def self.scrape_profile_page(profile_slug)
     student = {}
@@ -36,6 +37,7 @@ class Scraper
     student[:profile_quote] = profile_page.css(".profile-quote").text if profile_page.css(".profile-quote")
     student[:bio] = profile_page.css("div.bio-content.content-holder div.description-holder p").text if profile_page.css("div.bio-content.content-holder div.description-holder p")
 
+
     student
   end
-end 
+
